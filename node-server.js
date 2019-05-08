@@ -15,7 +15,7 @@ let render = VueServerRenderer.createBundleRenderer(serverBundle,{
     template,
     clientManifest
 });
-console.log(serverBundle,clientManifest)
+// console.log(serverBundle,clientManifest);
 
 app.get('/',(req,res)=>{
     // 把渲染成功的字符串扔给客户端,只是返回一个字符串 并没有vue实际功能

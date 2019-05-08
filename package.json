@@ -4,9 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "client:dev": "webpack-dev-server --config ./config/webpack.client.js",
-    "client:build": "webpack --config ./config/webpack.client.js",
-    "server:build": "webpack --config ./config/webpack.server.js"
+    "dev": "npm-run-all --parallel dev:**",
+    "dev:start": "nodemon node-server.js",
+    "dev:build:client": "webpack --config ./config/webpack.client.js --watch",
+    "dev:build:server": "webpack --config ./config/webpack.server.js --watch"
   },
   "dependencies": {
     "@babel/core": "^7.3.4",
@@ -16,6 +17,8 @@
     "css-loader": "^2.1.1",
     "express": "^4.16.4",
     "html-webpack-plugin": "^3.2.0",
+    "nodemon": "^1.19.0",
+    "npm-run-all": "^4.1.5",
     "vue": "^2.6.8",
     "vue-loader": "^15.7.0",
     "vue-meta": "^1.5.8",
@@ -29,5 +32,8 @@
     "webpack-dev-server": "^3.2.1",
     "webpack-merge": "^4.2.1",
     "webpack-node-externals": "^1.7.2"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^2.0.2"
   }
 }

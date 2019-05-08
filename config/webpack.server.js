@@ -20,13 +20,14 @@ module.exports = merge(base,{
         // dllPlugin
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-            'process.env.VUE_ENV': '"server"'
+            'process.env.VUE_ENV': 'server'
           }),
         new VueSSRServerPlugin(),
         new HtmlWebpackPlugin({
             filename:'index.ssr.html',
             template:path.resolve(__dirname,'../public/index.ssr.html'),
-            excludeChunks:['node-server']
+            // 排除掉server
+            excludeChunks:['server']
         })
     ]
 })

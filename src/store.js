@@ -12,7 +12,7 @@ export default ()=>{
         },
         mutations:{
             set_username(state){
-                state.username = 'zfpx';
+                state.username = 'zfpx1';
             }
         },
         actions:{
