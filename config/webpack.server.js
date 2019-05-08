@@ -9,7 +9,7 @@ let path = require('path');
 module.exports = merge(base,{
     target:'node', //打包出的结果给node用
     entry:{ // 入口文件
-        server: path.resolve(__dirname,'../src/server-entry.js')
+        server: path.resolve(__dirname,'../src/server/entry.js')
     },
     externals:[externals()], // 第三方模块不需要大包 因为js是在node中运行的默认可以使用第三方库 require
     output:{
@@ -20,7 +20,7 @@ module.exports = merge(base,{
         // dllPlugin
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
-            'process.env.VUE_ENV': 'server'
+            'process.env.VUE_ENV': '"server"'
           }),
         new VueSSRServerPlugin(),
         new HtmlWebpackPlugin({

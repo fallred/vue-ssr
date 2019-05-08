@@ -8,7 +8,7 @@ let HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports =merge(base,{
     // 入口
     entry:{
-        client:path.resolve(__dirname,'../src/client-entry.js')
+        client:path.resolve(__dirname,'../src/client/entry.js')
     },
     optimization: {
         splitChunks: {
