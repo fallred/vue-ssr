@@ -2,7 +2,7 @@ let path = require('path');
 let CleanWebpackPlugin = require('clean-webpack-plugin');
 let VueLoaderPlugin = require('vue-loader/lib/plugin')
 module.exports = {
-    mode:'production',
+    mode:'development',
     output:{
         filename:'[name].bundle.js',
         path: path.resolve(__dirname,'../dist'),
@@ -36,5 +36,6 @@ module.exports = {
     plugins:[
         new VueLoaderPlugin(),
         new CleanWebpackPlugin(),
-    ]
+    ],
+    devtool:'source-map'
 }

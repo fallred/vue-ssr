@@ -1,8 +1,8 @@
 
 let webpack = require('webpack');
+let path = require('path');
 let merge = require('webpack-merge');
 let base = require('./webpack.base');
-let path = require('path');
 let VueSSRClinetPlugin = require('vue-server-renderer/client-plugin')
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports =merge(base,{

@@ -5,7 +5,7 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-export default ()=>{
+export default (request)=>{
     let store = new Vuex.Store({
         state:{
             username:'jw'
@@ -17,12 +17,23 @@ export default ()=>{
         },
         actions:{
             set_username({commit}){
+                return request.get('/api/tagList').then(function(result){
+                    if (result.code===200) {
+                        let list  = result.data.list;
+                        commit('set_tag_list',list);
+                        resolve(list);
+                    } else {
+                        resolve([]);
+                    }
+                });
+                /*
                 return new Promise((resolve,reject)=>{
                     setTimeout(() => {
                         commit('set_username');
                         resolve();
                     }, 1000);
-                })
+                });
+                */
             }
         }
     });
