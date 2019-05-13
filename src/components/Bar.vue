@@ -22,7 +22,7 @@ export default {
         this.$bus.$on('dinner',(data)=>{
              console.log(data)
         })
-         this.$store.dispatch('set_username');
+        this.$store.dispatch('set_username');
     },
     methods:{
         show(){

@@ -7,13 +7,11 @@
     "dev": "npm-run-all --parallel dev:**",
     "dev:start": "nodemon server.js",
     "dev:client": "webpack-dev-server --config ./config/webpack.client.js --watch",
-    "dev:mock": "nodemon mock-dev-server.js",
 
     "build": "npm-run-all --parallel build:**",
     "build:start": "nodemon node-server.js",
     "build:client": "webpack --config ./config/webpack.client.js --watch",
-    "build:server": "webpack --config ./config/webpack.server.js --watch",
-    "build:mock": "nodemon mock-dev-server.js"
+    "build:server": "webpack --config ./config/webpack.server.js --watch"
   },
   "dependencies": {
     "@babel/core": "^7.3.4",

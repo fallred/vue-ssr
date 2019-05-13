@@ -4,7 +4,11 @@ const fs = require('fs');
 const url = require('url');
 
 const server = http.createServer((req, res) => {
-    const mockPath = path.join(process.cwd(), 'mock', url.parse(req.url).pathname.replace(/.ajax$/i, '.json'));
+    const pathname = url.parse(req.url).pathname;
+    const regurl = pathname.replace(/(\/api)(\/\w+)(\.ajax)/i, function(match, p1, p2, p3, offset, string){
+        return [p2,'.json'].join('');
+    })
+    const mockPath = path.join('mock', regurl);
     
     if (fs.existsSync(mockPath)) {
         res.writeHead(200, { 
@@ -19,9 +23,9 @@ const server = http.createServer((req, res) => {
             }).pipe(res);
         }, 10);
     } else {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.write(`no mock at ${mockPath}`);
-        res.end();
+        // res.writeHead(404, { 'Content-Type': 'text/plain' });
+        // res.write(`no mock at ${mockPath}`);
+        // res.end();
     }
 });
 server.listen(4000);

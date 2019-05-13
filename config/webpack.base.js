@@ -1,8 +1,18 @@
 let path = require('path');
 let CleanWebpackPlugin = require('clean-webpack-plugin');
-let VueLoaderPlugin = require('vue-loader/lib/plugin')
+let VueLoaderPlugin = require('vue-loader/lib/plugin');
+const mock = require('../mock/app');
 module.exports = {
     mode:'development',
+    devServer:{
+        // contentBase: path.resolve(__dirname,'dist'),
+        host: 'localhost',
+        compress: true,
+        port: 3000,
+        before(app){
+            mock(app);
+        }
+    },
     output:{
         filename:'[name].bundle.js',
         path: path.resolve(__dirname,'../dist'),
